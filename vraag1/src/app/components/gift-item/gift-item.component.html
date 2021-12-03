@@ -1,0 +1,25 @@
+<div class="card">
+  <img
+    alt="Avatar"
+    style="width:100%"
+    [src]="gift.thumbnail"
+    (dblclick)="removeItem()"
+  >
+  <div class="container">
+    <h4>
+      <b
+        [style]="gift.stock == 0 ? 'color: red; text-decoration: underline' : ''"
+      >
+        {{gift.description}} - (beschikbaar: {{gift.stock}})
+      </b>
+    </h4>
+    <p>
+      Kostprijs: {{ gift.points | points }} <br/>
+      Categorie: {{ gift.category }}
+    </p>
+  </div>
+  <button
+    [hidden]="gift.stock == 0"
+    (click)="claim()">Claim!
+  </button>
+</div>

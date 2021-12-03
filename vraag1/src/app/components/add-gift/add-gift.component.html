@@ -1,0 +1,52 @@
+<form [formGroup]="giftForm" (ngSubmit)="onSubmit()">
+  <label for="desc">
+    Description: <span style="color: red; display: inline-block" *ngIf="giftForm.get('description')?.hasError('minlength')">minimum 3 karakters!</span>
+  </label>
+
+  <input
+    type="text"
+    id="desc"
+    formControlName="description"
+  >
+
+  <label for="cat">
+    Category:
+  </label>
+  <select id="cat" formControlName="category">
+    <option
+      *ngFor="let category of categories$" [value]="category.name">{{category.name}}</option>
+  </select>
+
+  <label for="thumb">
+    thumbnail:
+  </label>
+  <input
+    type="text"
+    id="thumb"
+    formControlName="thumbnail"
+  >
+
+  <label for="points">
+    Points:
+  </label>
+  <input
+    type="number"
+    id="points"
+    formControlName="points"
+  >
+
+  <label for="stock">
+    Stock:
+  </label>
+  <input
+    type="number"
+    id="stock"
+    formControlName="stock"
+  >
+
+  <input
+    type="submit"
+    value="submit"
+    [disabled]="giftForm.invalid"
+  >
+</form>
